@@ -75,6 +75,7 @@ services:
     initialCommands: |
       cd $MAIN_PATH
       wp core install --url=$WP_URL --title="$WP_TITLE" --admin_user=$WP_ADMIN_USERNAME --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL
+      wp rewrite structure '/%year%/%monthnum%/%postname%/'
       wp plugin install varnish-http-purge --activate
       wp plugin install redis-cache --activate
       wp redis enable
