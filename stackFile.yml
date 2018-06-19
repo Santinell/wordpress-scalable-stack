@@ -26,6 +26,16 @@ services:
     deployTo:
       - edge
 
+  - name: search
+    type: elasticsearch
+    version: 5.6
+    remoteAccess: false
+    ports:
+      - 9200
+      - 9300
+    deployTo:
+      - edge
+
   - name: blog
     type: php
     version: 7.1
@@ -66,6 +76,8 @@ services:
       wp plugin install varnish-http-purge --activate
       wp plugin install redis-cache --activate
       wp redis enable
+      wp plugin install elasticpress --activate
+      wp elasticpress index --setup
     env:
       WP_URL: "{{=service('varnish').getNginxDomain()}}"
       WP_TITLE: null
