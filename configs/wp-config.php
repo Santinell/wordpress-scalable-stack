@@ -33,7 +33,7 @@ if (isset($_SERVER['HTTP_HOST'])) {
 define('WP_REDIS_HOST', '{{=service('cache').getAppAlias()}}');
 
 /** Define ES host */
-define( 'EP_HOST', 'http://search:9200' );
+define('EP_HOST', 'http://{{=service('search').getAppAlias()}}:9200' );
 
 /** Switching to real cron */
 define('DISABLE_WP_CRON', true);
