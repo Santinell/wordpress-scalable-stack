@@ -30,6 +30,8 @@ services:
     type: elasticsearch
     version: 5.6
     remoteAccess: false
+    env:
+      ES_JAVA_OPTS: -Xmx1g -Xms1g
     ports:
       - 9200
       - 9300
@@ -179,4 +181,4 @@ hosts:
   - name: edge
     requirements:
       cores: 1
-      memory: 1
+      memory: 2
